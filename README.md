@@ -14,3 +14,9 @@
 
    Use the first one as a reference. See if you can get it working in VSCode first with the version
    of crates in in Cargo.toml
+
+   ### esp-generate
+
+   ```sh
+   esp-generate --chip esp32c3 --headless -o unstable-hal -o probe-rs -o defmt -o panic-rtt-target -o vscode -o wokwi  simple 
+   ```

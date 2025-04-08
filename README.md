@@ -7,6 +7,8 @@
 
      * https://wokwi.com/projects/419546730269316097
      * https://wokwi.com/projects/391678800985971713
+     * https://wokwi.com/projects/401636991823336449
+     * https://wokwi.com/projects/421383217960391681
 
    They dont use the latest 1.0 beta version of esp-hal(use v0.22 and v0.21 respectively).
 

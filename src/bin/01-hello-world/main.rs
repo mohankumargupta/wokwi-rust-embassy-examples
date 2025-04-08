@@ -27,9 +27,7 @@ async fn main(spawner: Spawner) {
 
     //esp_println::logger::init_logger_from_env();
     info!("About to spawn hello world task!\r");
-    spawner
-        .spawn(hello_world())
-        .expect("Something went wrong spawning hello world task!");
+    spawner.spawn(hello_world()).ok();
     info!("Just spawned hello world task!\r");
     loop {
         Timer::after(Duration::from_secs(5)).await;

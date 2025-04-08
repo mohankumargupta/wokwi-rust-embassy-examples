@@ -10,7 +10,7 @@
 
 use esp_backtrace as _;
 use esp_hal::{clock::CpuClock, delay::Delay, main};
-use log::{info, error};
+use log::{error, info, warn};
 
 #[main]
 fn main() -> ! {
@@ -21,9 +21,10 @@ fn main() -> ! {
 
     //esp_println::logger::init_logger_from_env();
     esp_println::logger::init_logger(log::LevelFilter::Info);
-    info!("Hello world mohan!\r");
-    error!("Danger\r");
-    esp_println::println!("Hello world mohan println!\r");
+    info!("This is just info!\r");
+    warn!("This is just a warning!\r");
+    error!("Entering the danger zone!\r");
+    esp_println::println!("Garden variety println!\r");
     loop {
         delay.delay_millis(2000);
     }

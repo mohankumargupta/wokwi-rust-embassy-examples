@@ -16,9 +16,7 @@ async fn main(_spawner: Spawner) {
 
     let timer0 = SystemTimer::new(peripherals.SYSTIMER);
     esp_hal_embassy::init(timer0.alarm0);
-  
-    let output_config = OutputConfig::default();
-    let mut led = Output::new(peripherals.GPIO4, Level::Low, output_config);  
+    let mut led = Output::new(peripherals.GPIO4, Level::Low, OutputConfig::default());  
 
     loop {
         Timer::after(Duration::from_secs(2)).await;

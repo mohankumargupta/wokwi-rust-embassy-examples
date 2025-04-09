@@ -839,6 +839,7 @@ dependencies = [
  "build-print",
  "critical-section",
  "embassy-executor",
+ "embassy-sync",
  "embassy-time",
  "esp-backtrace",
  "esp-hal",

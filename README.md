@@ -18,5 +18,5 @@
    ### esp-generate
 
    ```sh
-esp-generate --chip esp32c3 --headless -o unstable-hal -o embassy -o log  -o defmt -o esp-backtrace -o vscode -o wokwi simple
+esp-generate --chip esp32c3 --headless -o unstable-hal -o embassy -o log -o esp-backtrace -o vscode -o wokwi simple
    ```

@@ -7,6 +7,10 @@ version = "0.1.0"
 name = "hello-world"
 path = "./src/01-helloworld/main.rs"
 
+[[bin]]
+name = "blink"
+path = "./src/02-blink/main.rs"
+
 [dependencies]
 critical-section = "1.2.0"
 embassy-executor = { version = "0.7.0", features = ["task-arena-size-20480"] }

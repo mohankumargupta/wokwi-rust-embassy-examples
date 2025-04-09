@@ -50,12 +50,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c8214115b7bf84099f1309324e63141d4c5d7cc26862f97a0a857dbefe165bd"
 
 [[package]]
-name = "build-print"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4a2128d00b7061b82b72844a351e80acd29e05afc60e9261e2ac90dca9ecc2ac"
-
-[[package]]
 name = "bytemuck"
 version = "1.22.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -350,7 +344,6 @@ checksum = "e4cd70abe47945c9116972781b5c05277ad855a5f5569fe2afd3e2e61a103cc0"
 dependencies = [
  "esp-build",
  "esp-println",
- "semihosting",
 ]
 
 [[package]]
@@ -402,10 +395,9 @@ dependencies = [
  "esp-hal-procmacros",
  "esp-metadata",
  "esp-riscv-rt",
- "esp32",
+ "esp32c3",
  "fugit",
  "instability",
- "log",
  "nb 1.1.0",
  "paste",
  "portable-atomic",
@@ -493,29 +485,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "esp32"
-version = "0.36.0"
+name = "esp32c3"
+version = "0.28.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d9b774d7a2c96550a5c25016c2abd33370ebac60e534484b7bca344ecb8a3d6"
+checksum = "df1bbcfa3ab2979171263db80804dabc38bdd45450c7eb775ee3f81d552cf0ba"
 dependencies = [
  "critical-section",
  "vcell",
-]
-
-[[package]]
-name = "esp32-examples"
-version = "0.1.0"
-dependencies = [
- "build-print",
- "critical-section",
- "embassy-executor",
- "embassy-time",
- "esp-backtrace",
- "esp-hal",
- "esp-hal-embassy",
- "esp-println",
- "log",
- "toml",
 ]
 
 [[package]]
@@ -822,12 +798,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eded382c5f5f786b989652c49544c4877d9f015cc22e145a5ea8ea66c2921cd2"
 
 [[package]]
-name = "semihosting"
-version = "0.1.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c3e1c7d2b77d80283c750a39c52f1ab4d17234e8f30bca43550f5b2375f41d5f"
-
-[[package]]
 name = "serde"
 version = "1.0.219"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -854,6 +824,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "87607cb1398ed59d48732e575a4c28a7a8ebf2454b964fe3f224f2afc07909e1"
 dependencies = [
  "serde",
+]
+
+[[package]]
+name = "simple"
+version = "0.1.0"
+dependencies = [
+ "critical-section",
+ "embassy-executor",
+ "embassy-time",
+ "esp-backtrace",
+ "esp-hal",
+ "esp-hal-embassy",
+ "esp-println",
+ "log",
+ "static_cell",
 ]
 
 [[package]]

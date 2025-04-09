@@ -1,66 +1,7 @@
-use build_print::info;
-//use std::env;
-
-use std::{fs::copy, path::PathBuf};
-use toml::Value;
-
 fn main() {
-    binary_path_from_cargo_toml();
     linker_be_nice();
     // make sure linkall.x is the last linker script (otherwise might cause problems with flip-link)
     println!("cargo:rustc-link-arg=-Tlinkall.x");
-}
-
-// fn get_env_vars() {
-//     info!("Environment variables:");
-//     for (key, value) in env::vars() {
-//         info!("{}={}", key, value);
-//     }
-// }
-
-// fn get_cargo_env_vars() {
-//     info!("Environment variables:");
-//     for (key, value) in env::vars() {
-//         if key.starts_with("CARGO_") {
-//             info!("{}={}", key, value);
-//         }
-//     }
-// }
-
-fn binary_path_from_cargo_toml() {
-    let binary_name = std::env::var("BINARY_NAME").unwrap();
-    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").unwrap();
-    //info!("Manifest dir: {}", &manifest_dir);
-    let manifest_path = PathBuf::from(&manifest_dir).join("Cargo.toml");
-    //info!("{}", manifest_path.display());
-    let manifest_content = std::fs::read_to_string(manifest_path).unwrap();
-    //build_print::println!("{:?}", manifest_content);
-    let mytoml: Value = toml::from_str(&manifest_content).unwrap();
-    let bins = mytoml.get("bin").unwrap();
-    let bin_path = bins
-        .as_array()
-        .unwrap()
-        .iter()
-        .find(|b| b["name"].as_str().unwrap() == binary_name)
-        .and_then(|b| b["path"].as_str())
-        .unwrap_or_else(|| panic!("Path not found for binary: {}", binary_name));
-    //build_print::println!("{:?}", bins.to_string());
-    //info!("BINARY_PATH: {}", bin_path);
-    let binary_src_path = PathBuf::from(bin_path);
-    let binary_path = binary_src_path.parent().unwrap();
-    //info!("BINARY_PATH: {}", binary_path.display());
-    let in_wokwi_toml = binary_path.join("wokwi.toml");
-    let in_diagram_json = binary_path.join("diagram.json");
-    //info!("Wokwi path: {}", in_wokwi_toml.display());
-    //info!("Diagram path: {}", in_diagram_json.display());
-    let manifest_dir = PathBuf::from(&manifest_dir);
-    let out_wokwi_toml = manifest_dir.join("wokwi.toml");
-    let out_diagram_json = manifest_dir.join("diagram.json");
-    info!("Wokwi path: {}", out_wokwi_toml.display());
-    info!("Diagram path: {}", out_diagram_json.display());
-    copy(in_diagram_json, out_diagram_json)
-        .unwrap_or_else(|_| panic!("Failed to copy diagram.json"));
-    copy(in_wokwi_toml, out_wokwi_toml).unwrap_or_else(|_| panic!("Failed to copy wokwi.toml"));
 }
 
 fn linker_be_nice() {
@@ -93,7 +34,7 @@ fn linker_be_nice() {
     }
 
     println!(
-        "cargo:rustc-link-arg=-Wl,--error-handling-script={}",
+        "cargo:rustc-link-arg=--error-handling-script={}",
         std::env::current_exe().unwrap().display()
     );
 }

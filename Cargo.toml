@@ -4,8 +4,8 @@ name    = "simple"
 version = "0.1.0"
 
 [[bin]]
-name = "simple"
-path = "./src/bin/main.rs"
+name = "hello-world"
+path = "./src/01-helloworld/main.rs"
 
 [dependencies]
 critical-section = "1.2.0"

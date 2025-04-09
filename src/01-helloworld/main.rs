@@ -33,12 +33,12 @@ async fn main(spawner: Spawner) {
 
 #[embassy_executor::task]
 async fn hello_world_task() {
-    let mut alternate = false;
+    let mut alternate = true;
     loop {
         if alternate {
             warn!("\rThis is a warning!\r");
         } else {
-            error!("\r!This is an error. No sweat!\r");
+            error!("\rThis is a pretend error!\r");
         }
         alternate = !alternate;
         Timer::after(Duration::from_millis(2000)).await;

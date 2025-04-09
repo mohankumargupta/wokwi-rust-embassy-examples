@@ -9,11 +9,7 @@
 ### Justfile
 
 ```sh
-just --set bin hello-world esp32c3
-
-#or if you have fzf installed
-
-just --choose bin=hello-world
+just esp32c3 hello-world
 ```
 
 ### esp-generate

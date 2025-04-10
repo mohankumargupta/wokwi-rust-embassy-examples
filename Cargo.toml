@@ -15,6 +15,11 @@ path = "./src/02-blink/main.rs"
 name = "button"
 path = "./src/03-button/main.rs"
 
+[[bin]]
+name = "buttonpresses"
+path = "./src/04-button-presses/main.rs"
+
+
 [dependencies]
 critical-section = "1.2.0"
 embassy-executor = { version = "0.7.0", features = ["task-arena-size-20480"] }

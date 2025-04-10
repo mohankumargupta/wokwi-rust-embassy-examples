@@ -7,7 +7,7 @@ use embassy_sync::signal::Signal;
 use embassy_time::{Duration, Timer};
 use esp_backtrace as _;
 use esp_hal::clock::CpuClock;
-use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
+use esp_hal::gpio::{DriveStrength, Input, InputConfig, Level, Output, OutputConfig, Pull};
 use esp_hal::timer::systimer::SystemTimer;
 use log::info;
 
@@ -24,9 +24,9 @@ async fn main(spawner: Spawner) {
     let timer0 = SystemTimer::new(peripherals.SYSTIMER);
     esp_hal_embassy::init(timer0.alarm0);
   
-    let red = Output::new(peripherals.GPIO4, Level::Low,  OutputConfig::default());
-    let green = Output::new(peripherals.GPIO5, Level::Low,  OutputConfig::default());
-    let blue = Output::new(peripherals.GPIO6, Level::Low,  OutputConfig::default());  
+    let red = Output::new(peripherals.GPIO4, Level::Low,  OutputConfig::default().with_drive_strength(DriveStrength::_20mA));
+    let green = Output::new(peripherals.GPIO5, Level::Low,  OutputConfig::default().with_drive_strength(DriveStrength::_20mA));
+    let blue = Output::new(peripherals.GPIO6, Level::Low,  OutputConfig::default().with_drive_strength(DriveStrength::_20mA));  
     let button = Input::new(peripherals.GPIO7, InputConfig::default().with_pull(Pull::Up));
    
     info!("\rSpawning tasks...\r");

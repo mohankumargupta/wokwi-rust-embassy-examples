@@ -4,7 +4,7 @@
 use embassy_executor::Spawner;
 use embassy_sync::blocking_mutex::raw::CriticalSectionRawMutex;
 use embassy_sync::signal::Signal;
-use embassy_time::{Duration, Timer};
+use embassy_time::{Duration, Instant, Timer};
 use esp_backtrace as _;
 use esp_hal::clock::CpuClock;
 use esp_hal::gpio::{DriveStrength, Input, InputConfig, Level, Output, OutputConfig, Pull};
@@ -55,8 +55,14 @@ async fn button_task(mut button: Input<'static>, signal: &'static Signal<Critica
    loop {
     button.wait_for_falling_edge().await;
     info!("\rButton pressed!\r");
-    signal.signal(());
-    Timer::after(Duration::from_millis(300)).await;  
+    //Need to record  instant now from embassy time
+    let now = Instant::now();
+    //Timer::after(Duration::from_millis(300)).await; // debounce
+    button.wait_for_rising_edge().await;
+    let elapsed = Instant::now().duration_since(now);
+    info!("\rButton released after {} ms!\r", elapsed.as_millis());
+    //signal.signal(());
+    //Timer::after(Duration::from_millis(300)).await;  
    }
 }
 

@@ -15,7 +15,7 @@
       "id": "btn1",
       "top": 54.2,
       "left": -86.4,
-      "attrs": { "color": "green", "xray": "1" }
+      "attrs": { "color": "green", "xray": "1", "bounce": "0" }
     },
     {
       "type": "wokwi-rgb-led",

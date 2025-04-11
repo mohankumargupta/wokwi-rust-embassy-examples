@@ -5,7 +5,9 @@ use std::{fs::copy, path::PathBuf};
 use toml::Value;
 
 fn main() {
-    copy_wokwi();
+    if std::env::var("BINARY_NAME").is_ok() {
+        copy_wokwi();
+    }
     linker_be_nice();
     // make sure linkall.x is the last linker script (otherwise might cause problems with flip-link)
     println!("cargo:rustc-link-arg=-Tlinkall.x");

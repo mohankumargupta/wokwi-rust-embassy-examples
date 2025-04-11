@@ -9,6 +9,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dcfed56ad506cb2c684a14971b8861fdc3baaaae314b9e5f9bb532cbe3ba7a4f"
 
 [[package]]
+name = "async-button"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c6cb2c64198ecf080dccccff92166ee0eb0fc1b22b15546903d59ea31ad76f6d"
+dependencies = [
+ "cfg-if",
+ "embassy-time",
+ "embedded-hal 1.0.0",
+ "embedded-hal-async",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -836,6 +848,7 @@ dependencies = [
 name = "simple"
 version = "0.1.0"
 dependencies = [
+ "async-button",
  "build-print",
  "critical-section",
  "embassy-executor",

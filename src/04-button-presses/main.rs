@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
+mod button;
+
 use embassy_executor::Spawner;
 use embassy_sync::blocking_mutex::raw::CriticalSectionRawMutex;
 use embassy_sync::signal::Signal;
